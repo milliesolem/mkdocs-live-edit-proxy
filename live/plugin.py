@@ -39,7 +39,7 @@ class LiveEditPlugin(BasePlugin):
     """
     config_scheme = (
         ('websockets_lhost', config_options.Type(str, default=None)),
-        ('websockets_lhost', config_options.Type(int, default=8484)),
+        ('websockets_lport', config_options.Type(int, default=8484)),
         ('websockets_rhost', config_options.Type(str, default=None)),
         ('websockets_rport', config_options.Type(int, default=443)),
         ('websockets_timeout', config_options.Type(int, default=10)),
@@ -348,7 +348,7 @@ class LiveEditPlugin(BasePlugin):
         page_base_path = Path(page.file.src_path).parent.as_posix()
         preamble = (
             f"const ws_host = {self.config['websockets_rhost']};\n"
-            f"const ws_port = {self.config['websockets_rport']};\n"
+            f"const ws_port = {self.config['webd ckets_rport']};\n"
             f"const debug_mode = {str(self.config['debug_mode']).lower()};\n"
             f"let page_path = '{page.file.src_uri}';\n"
             f"let page_filename = '{basename}';\n"
