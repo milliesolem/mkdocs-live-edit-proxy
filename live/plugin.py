@@ -38,8 +38,10 @@ class LiveEditPlugin(BasePlugin):
     An MkDocs plugin that allows editing pages directly from the browser.
     """
     config_scheme = (
-        ('websockets_host', config_options.Type(str, default=None)),
-        ('websockets_port', config_options.Type(int, default=8484)),
+        ('websockets_lhost', config_options.Type(str, default=None)),
+        ('websockets_lhost', config_options.Type(int, default=8484)),
+        ('websockets_rhost', config_options.Type(str, default=None)),
+        ('websockets_rport', config_options.Type(int, default=443)),
         ('websockets_timeout', config_options.Type(int, default=10)),
         ('debug_mode', config_options.Type(bool, default=False)),
         ('user_docs_dir', config_options.Type(str, default=None)),
@@ -345,7 +347,8 @@ class LiveEditPlugin(BasePlugin):
         css = f'<style>{self.css_contents}</style>'
         page_base_path = Path(page.file.src_path).parent.as_posix()
         preamble = (
-            f"const ws_port = {self.config['websockets_port']};\n"
+            f"const ws_host = {self.config['websockets_rhost']};\n"
+            f"const ws_port = {self.config['websockets_rport']};\n"
             f"const debug_mode = {str(self.config['debug_mode']).lower()};\n"
             f"let page_path = '{page.file.src_uri}';\n"
             f"let page_filename = '{basename}';\n"

@@ -6,16 +6,15 @@ this_directory = Path(__file__).parent
 long_description = (this_directory / 'README.md').read_text()
 
 setup(
-    name='mkdocs-live-edit-plugin',
+    name='mkdocs-live-edit-proxy',
     version='0.4.2',
     description='An MkDocs plugin that allows editing pages directly from the browser.',
     long_description=long_description,
     long_description_content_type='text/markdown',
     keywords='mkdocs python markdown editing authoring wiki server',
-    url='https://live-edit.luten.dev/',
-    author='Eddy Luten',
-    author_email='eluten@pm.me',
-    license='MIT',
+    url='https://example.com',
+    author='M',
+    license='GPL-3',
     python_requires='>=3.10',
     install_requires=[
         'mkdocs',
@@ -29,7 +28,7 @@ setup(
     ],
     packages=find_packages(exclude=['*.tests']),
     entry_points={
-        'mkdocs.plugins': ['live-edit = live.plugin:LiveEditPlugin']
+        'mkdocs.plugins': ['live-edit-proxy = live.plugin:LiveEditPlugin']
     },
     data_files=[('live', ['live/live-edit.js', 'live/live-edit.css'])],
     include_package_data=True,

@@ -42,7 +42,7 @@ function websocket_connect(hostname, port) {
   le_log('live-edit: page_base_path:', page_base_path);
 
   domLoaded.then(() => {
-    const wsConnected = websocket_connect(window.location.hostname, ws_port);
+    const wsConnected = websocket_connect(ws_host, ws_port);
     wsConnected
       .then(wso => {
         le_log('Connected to live-edit server');
